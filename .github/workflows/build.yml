@@ -20,5 +20,6 @@ jobs:
       run: echo REPO_GIT_HASH=$REPO_GIT_HASH
     - name: build project
       run: cd nrelay && cargo build
-
+    - name: display out_version
+      run: pwd && realpath out_version.txt && cat out_version.txt
 
