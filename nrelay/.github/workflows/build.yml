@@ -1,0 +1,24 @@
+name: Build
+
+on:
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+  REPO_GIT_HASH: ${{ github.sha }}
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: display rust version
+      run: rustup --version
+    - name: display repo git hash
+      run: echo REPO_GIT_HASH=$REPO_GIT_HASH
+    - name: build project
+      run: cd nrelay && cargo build
+
+
