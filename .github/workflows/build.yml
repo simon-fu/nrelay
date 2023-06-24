@@ -5,7 +5,7 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  REPO_GIT_HASH: ${{ github.head_ref }}.${{ github.sha }}
+  REPO_GIT_HASH: ${{ github.sha }}
 
 jobs:
   build:
@@ -19,6 +19,6 @@ jobs:
     - name: display repo git hash
       run: echo REPO_GIT_HASH=$REPO_GIT_HASH
     - name: build project
-      run: cargo build
+      run: cd nrelay && cargo build
 
 
