@@ -43,7 +43,9 @@ jobs:
       run: echo REPO_GIT_HASH=$REPO_GIT_HASH
 
     - name: build project
-      run: cd nrelay && cargo build
+      run: |
+        source $HOME/.cargo/env
+        cd nrelay && cargo build
 
 # jobs:
 #   build:
