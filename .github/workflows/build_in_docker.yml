@@ -42,8 +42,8 @@ jobs:
           
     - name: Install Development Tools
       run: |
-        sudo yum update -y
-        sudo yum groupinstall -y 'Development Tools'
+        yum update -y
+        yum groupinstall -y 'Development Tools'
 
     - uses: actions/checkout@v3
 
