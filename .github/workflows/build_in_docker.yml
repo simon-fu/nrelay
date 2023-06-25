@@ -29,11 +29,22 @@ jobs:
     - name: /etc/issue
       run: cat /etc/issue
 
-    - name: Install Rust toolchain
-      run: |
-        curl https://sh.rustup.rs -sSf | sh -s -- -y
-        source $HOME/.cargo/env
+    # - name: Curl install Rust toolchain
+    #   run: |
+    #     curl https://sh.rustup.rs -sSf | sh -s -- -y
+    #     source $HOME/.cargo/env
+
+    - name: Actions-rs install Rust toolchain
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: 1.70.0
+        override: true
           
+    - name: Install Development Tools
+      run: |
+        sudo yum update -y
+        sudo yum groupinstall -y 'Development Tools'
+
     - uses: actions/checkout@v3
 
     - name: display repo git hash
