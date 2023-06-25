@@ -13,6 +13,10 @@ jobs:
     container: centos:centos7.9.2009
 
     steps:
+
+    - name: display env var
+      run: echo REPO_GIT_HASH=$REPO_GIT_HASH
+
     - name: Check for dockerenv file
       run: (ls /.dockerenv && echo Found dockerenv) || (echo No dockerenv)
 
