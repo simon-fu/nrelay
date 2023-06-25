@@ -15,12 +15,19 @@ jobs:
     steps:
     - name: Check for dockerenv file
       run: (ls /.dockerenv && echo Found dockerenv) || (echo No dockerenv)
-      
+
     - name: uname 
       run: uname -a
 
     - name: /proc/version
       run: cat /proc/version
+
+    - name: /etc/redhat-release
+      run: cat /etc/redhat-release
+
+    - name: /etc/issue
+      run: cat /etc/issue
+
 
 # jobs:
 #   build:
