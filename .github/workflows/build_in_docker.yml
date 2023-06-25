@@ -1,0 +1,43 @@
+name: Build in docker
+
+on:
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+  REPO_GIT_HASH: ${{ github.sha }}
+
+jobs:
+  example-job:
+    runs-on: ubuntu-latest
+    container: centos:latest
+
+    steps:
+
+    - name: uname 
+      run: uname -a
+
+    - name: lsb_release
+      run: lsb_release -a
+
+# jobs:
+#   build:
+
+#     runs-on: ubuntu-latest
+
+#     steps:
+
+#     - uses: actions/checkout@v3
+
+#     - name: display rust version
+#       run: rustup --version
+
+#     - name: display repo git hash
+#       run: echo REPO_GIT_HASH=$REPO_GIT_HASH
+
+#     - name: build project
+#       run: cd nrelay && cargo build
+      
+#     - name: display out_version
+#       run: pwd && realpath out_version.txt && cat out_version.txt
+

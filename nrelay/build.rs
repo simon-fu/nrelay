@@ -29,6 +29,7 @@ fn write_version() {
     // .unwrap();
 
     let hash_or_tag = get_git_hash(src.as_ref()).unwrap();
+    let hash_or_tag = &hash_or_tag[..7.min(hash_or_tag.len())];
 
     let dst = format!("{}/out_version.txt", src);
     let mut built_file = std::fs::File::create(&dst).unwrap();
