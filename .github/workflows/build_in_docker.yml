@@ -14,9 +14,6 @@ jobs:
 
     steps:
 
-    - name: display env var
-      run: echo REPO_GIT_HASH=$REPO_GIT_HASH
-
     - name: Check for dockerenv file
       run: (ls /.dockerenv && echo Found dockerenv) || (echo No dockerenv)
 
@@ -32,6 +29,16 @@ jobs:
     - name: /etc/issue
       run: cat /etc/issue
 
+    - uses: actions/checkout@v3
+
+    - name: display rust version
+      run: rustup --version
+
+    - name: display repo git hash
+      run: echo REPO_GIT_HASH=$REPO_GIT_HASH
+
+    - name: build project
+      run: cd nrelay && cargo build
 
 # jobs:
 #   build:
