@@ -17,8 +17,8 @@ jobs:
     - name: uname 
       run: uname -a
 
-    - name: lsb_release
-      run: lsb_release -a
+    - name: /proc/version
+      run: cat /proc/version
 
 # jobs:
 #   build:
