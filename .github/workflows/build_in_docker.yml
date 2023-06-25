@@ -34,12 +34,31 @@ jobs:
     #     curl https://sh.rustup.rs -sSf | sh -s -- -y
     #     source $HOME/.cargo/env
 
-    - name: Actions-rs install Rust toolchain
+    # - name: Change Rust version
+    #   run: |
+    #     source $HOME/.cargo/env
+    #     rustup install 1.70.0
+    #     rustup default 1.70.0
+
+    # - name: Actions-rs install Rust toolchain
+    #   uses: actions-rs/toolchain@v1
+    #   with:
+    #     toolchain: 1.70.0
+    #     override: true
+          
+    - name: Cache Rust toolchain
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/.cargo
+          ~/.rustup
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+    - name: Install Rust toolchain
       uses: actions-rs/toolchain@v1
       with:
-        toolchain: 1.70.0
-        override: true
-          
+        toolchain: stable
+
     - name: Install Development Tools
       run: |
         yum update -y
