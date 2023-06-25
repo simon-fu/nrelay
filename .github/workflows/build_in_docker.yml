@@ -29,6 +29,11 @@ jobs:
     - name: /etc/issue
       run: cat /etc/issue
 
+    - name: Install Rust toolchain
+      run: |
+        curl https://sh.rustup.rs -sSf | sh -s -- -y
+        source $HOME/.cargo/env
+          
     - uses: actions/checkout@v3
 
     - name: display rust version
